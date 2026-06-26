@@ -1,0 +1,120 @@
+:root {
+    --velocidade-entrada: 1s;
+    --botoes-aparecem: calc(var(--velocidade-entrada) + .3s);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+header{
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0 auto;
+    max-width: 500px;
+    background-color: #eeeeee;
+    padding: 10px;
+    border-radius: 50px;
+    margin-top: 20px;
+    border: .1px solid rgb(206, 5, 5);
+    animation: Chegando var(--botoes-aparecem);
+    height: 80px;
+}
+
+header nav{
+    display: flex;
+    gap: 30px;
+    width: 100%;
+    justify-content: space-between;
+    transition: 1s;
+}
+
+
+header nav a{
+    background-color: rgb(231, 33, 33);
+    padding: 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    width: 33%;
+    text-align: center;
+    color: #f1f1f1;
+    position: relative;
+    transition: .5s;
+    animation: Botoes-aparecem 1s forwards;
+    opacity: 0%;
+}
+
+header nav a:nth-child(1){
+    animation-delay: var(--botoes-aparecem);
+}
+
+header nav a:nth-child(2){
+    animation-delay: calc(var(--botoes-aparecem) + .3s);
+}
+
+header nav a:nth-child(3){
+    animation-delay: calc(var(--botoes-aparecem) + .6s);
+}
+
+header nav a:after{
+    content: '';
+    height: 100%;
+    top:0;
+    left: 0;
+    border-radius: 50px;
+    width: 100%;
+    position: absolute;
+}
+
+header a:hover{
+    transform: translateY(10px);
+    background-color: rgb(54, 0, 0);
+    background-color: #f3f3f3;
+    border: .1px solid rgb(206, 5, 5);
+    color: rgb(20, 20, 20);
+}
+
+@keyframes Chegando {
+    from{
+        transform: translate(-100vw);
+    }
+    to{
+        transform: translate(0vw);
+    }   
+}
+
+@keyframes Botoes-aparecem {
+    0%{
+        transform: translateY(0);
+        opacity: 0%;   
+    }
+    50%{
+        transform: translateY(-10px);
+    }
+    100%{
+        transform: translateY(0);
+        opacity: 100%;
+    }
+}
+
+#home{
+    height: 100vh;
+    background-image: url('./imgs/imagem_principal.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    animation: aparecendo .3s forwards;
+    opacity: 0%;
+    animation-delay: var(--botoes-aparecem);
+}
+
+@keyframes aparecendo {
+    from{
+        opacity: 0%;
+    }
+    to{
+        opacity: 100%;
+    }
+}
